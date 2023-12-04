@@ -6,7 +6,7 @@ from sqlalchemy import create_engine,text
 
 # import mysql.connector
 
-# import plotly.express as px
+import plotly.express as px
 # import pandas as pd
 
 
