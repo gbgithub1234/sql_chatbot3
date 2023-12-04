@@ -285,11 +285,59 @@ if prompt := st.chat_input():
             for row in table_data:
                 print(row)
 
-            #----------------------------------------------------
-            import plotly.figure_factory as ff
-            fig = ff.create_table(table_data, height_constant=60)
+
+
+            #---------------------------------------------------------
+            #display the chart
+
+
+
+            #----------------------------
+            #extract the output from the sql query and prepare it for the chart
+
+
+            label_array = []
+            percent_array = []
+
+            num_of_rows = len(table_data)  # 7 rows in your example
+            num_of_cols = len(table_data[0])  # 2 columns in your example
+
+            # print(num_of_rows)
+            # print(num_of_cols)
+            #
+            # print("table_data>>>")
+
+
+            # for i in range(num_of_rows):
+            #     for j in range(num_of_cols):
+            #         print(table_data[i][j])
+
+            for row in range(num_of_rows):
+                col = 0
+                label_array.append(table_data[row][col])
+                print(label_array[row])
+
+            for row in range(num_of_rows):
+                col = 1
+                percent_array.append(table_data[row][col])
+                print(percent_array[row])
+
+            print("<<<table_data")
+
+            # print table_data
+
+            #-----------------------------
+
+            # fig = px.pie(values=random_x, names=names)
+            fig = px.pie(values=percent_array, names=label_array)
+
             fig.layout.margin.update({'t': 50, 'b': 100})
+
             st.plotly_chart(fig, use_container_width=True)
+
+            #---------------------------------------------------------
+
+      
 
         else:
             print("No results were found for that query.")
